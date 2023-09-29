@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import {
   SearchFormSt,
@@ -9,6 +9,7 @@ import {
 const SearchForm = ({ getSearchMovies }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('search') ?? '';
+  const [searchQuery, setSearchQuery] = useState('');
 
   const handleInputChange = ({ target: { value } }) => {
     value
@@ -16,16 +17,13 @@ const SearchForm = ({ getSearchMovies }) => {
       : setSearchParams({});
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    getSearchMovies(query);
+  const handleSubmit = value => {
+    setSearchQuery(value);
   };
 
   useEffect(() => {
-    if (query) {
-      getSearchMovies(query);
-    }
-  }, [getSearchMovies, query]);
+    searchQuery && getSearchMovies(searchQuery);
+  }, [getSearchMovies, searchQuery]);
 
   return (
     <SearchFormSt onSubmit={handleSubmit}>

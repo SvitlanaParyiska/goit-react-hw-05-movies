@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import axios from 'axios';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import SearchForm from 'components/SearchForm/SearchForm';
 import { Container } from './Movies.styled';
 import { MovieLink, MovieItem } from 'components/MoviesList/MoviesList.styled';
@@ -16,10 +16,12 @@ const options = {
 
 const Movies = () => {
   const [searchMovies, setSearchMovies] = useState(null);
-
   const location = useLocation();
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get('search') ?? '';
+  const ref = useRef(query);
 
-  const getSearchMovies = async query => {
+  const getSearchMovies = useCallback(async query => {
     try {
       const url = `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`;
       const { data } = await axios(url, options);
@@ -27,7 +29,11 @@ const Movies = () => {
     } catch (error) {
       console.log(error.message);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    ref.current && getSearchMovies(ref.current);
+  }, [getSearchMovies]);
 
   return (
     <main>

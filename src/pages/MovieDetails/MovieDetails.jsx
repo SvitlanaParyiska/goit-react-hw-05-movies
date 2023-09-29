@@ -10,6 +10,7 @@ import {
   AdditionalBox,
   InfoLink,
 } from './MovieDetails.styled';
+import { BiArrowBack } from 'react-icons/bi';
 
 const options = {
   headers: {
@@ -46,13 +47,13 @@ const MovieDetails = () => {
     <main>
       <Container>
         <LinkBack to={backLinkHref} state={{ from: location }}>
-          Go back
+          <BiArrowBack /> Go back
         </LinkBack>
 
         {movieDetails && (
           <Wrapper>
             <img
-              width="300px"
+              width="200px"
               src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
               alt={movieDetails.title}
             />
