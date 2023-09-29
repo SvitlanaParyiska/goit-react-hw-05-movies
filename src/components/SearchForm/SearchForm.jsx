@@ -1,3 +1,4 @@
+import Notiflix from 'notiflix';
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import {
@@ -21,6 +22,10 @@ const SearchForm = ({ getSearchMovies }) => {
     e.preventDefault();
     const form = e.currentTarget;
     const value = form.elements.search.value;
+
+    if (value === '') {
+      Notiflix.Notify.failure('Fill in the form!');
+    }
     setSearchQuery(value);
   };
 
