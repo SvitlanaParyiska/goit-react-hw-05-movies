@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import axios from 'axios';
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import SearchForm from 'components/SearchForm/SearchForm';
 import { Container } from './Movies.styled';
-import { MovieLink, MovieItem } from 'components/MoviesList/MoviesList.styled';
+import MoviesList from 'components/MoviesList/MoviesList';
 
 const options = {
   method: 'GET',
@@ -16,7 +16,6 @@ const options = {
 
 const Movies = () => {
   const [searchMovies, setSearchMovies] = useState(null);
-  const location = useLocation();
   const [searchParams] = useSearchParams();
   const query = searchParams.get('search') ?? '';
   const ref = useRef(query);
@@ -41,15 +40,7 @@ const Movies = () => {
         <SearchForm getSearchMovies={getSearchMovies} />
         {searchMovies && (
           <div>
-            <ul>
-              {searchMovies.map(({ id, title }) => (
-                <MovieItem key={id}>
-                  <MovieLink to={`/movies/${id}`} state={{ from: location }}>
-                    <p>{title}</p>
-                  </MovieLink>
-                </MovieItem>
-              ))}
-            </ul>
+            <MoviesList movies={searchMovies} />
           </div>
         )}
       </Container>

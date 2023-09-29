@@ -17,7 +17,10 @@ const SearchForm = ({ getSearchMovies }) => {
       : setSearchParams({});
   };
 
-  const handleSubmit = value => {
+  const handleSubmit = e => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const value = form.elements.search.value;
     setSearchQuery(value);
   };
 
