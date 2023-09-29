@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import PropTypes from 'prop-types';
 import MoviesList from 'components/MoviesList/MoviesList';
 import { useState, useEffect, useCallback } from 'react';
 import { Title, Container } from './Home.styled';
@@ -31,7 +30,6 @@ const Home = props => {
     getTrendingList();
   }, [getTrendingList]);
 
-
   return (
     <Container>
       <Title>Trending today</Title>
@@ -39,7 +37,5 @@ const Home = props => {
     </Container>
   );
 };
-
-Home.propTypes = {};
 
 export default Home;

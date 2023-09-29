@@ -1,7 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import axios from 'axios';
-import { useLocation, useParams, NavLink, Outlet } from 'react-router-dom';
+import { useLocation, useParams, Outlet } from 'react-router-dom';
 import { Suspense, useState, useEffect, useCallback } from 'react';
 import {
   LinkBack,
@@ -91,7 +90,5 @@ const MovieDetails = () => {
     </main>
   );
 };
-
-MovieDetails.propTypes = {};
 
 export default MovieDetails;

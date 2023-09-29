@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 import SearchForm from 'components/SearchForm/SearchForm';
 import { Container } from './Movies.styled';
@@ -51,7 +50,5 @@ const Movies = () => {
     </main>
   );
 };
-
-Movies.propTypes = {};
 
 export default Movies;

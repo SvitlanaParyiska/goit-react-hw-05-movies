@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { useSearchParams } from 'react-router-dom';
 import {
   SearchFormSt,
@@ -26,7 +25,7 @@ const SearchForm = ({ getSearchMovies }) => {
     if (query) {
       getSearchMovies(query);
     }
-  }, []);
+  }, [getSearchMovies, query]);
 
   return (
     <SearchFormSt onSubmit={handleSubmit}>
@@ -41,7 +40,5 @@ const SearchForm = ({ getSearchMovies }) => {
     </SearchFormSt>
   );
 };
-
-SearchForm.propTypes = {};
 
 export default SearchForm;

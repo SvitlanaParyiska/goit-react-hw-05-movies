@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useState } from 'react';
@@ -58,7 +57,5 @@ const Cast = props => {
     </>
   );
 };
-
-Cast.propTypes = {};
 
 export default Cast;

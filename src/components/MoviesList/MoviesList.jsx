@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Link, useLocation } from 'react-router-dom';
+
+import { useLocation } from 'react-router-dom';
 import { MovieItem, MovieLink } from './MoviesList.styled';
 
 const MoviesList = ({ movies }) => {
@@ -17,7 +17,5 @@ const MoviesList = ({ movies }) => {
     </ul>
   );
 };
-
-MoviesList.propTypes = {};
 
 export default MoviesList;

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import axios from 'axios';
 import { useState, useCallback, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
@@ -50,7 +49,5 @@ const Reviews = props => {
     </>
   );
 };
-
-Reviews.propTypes = {};
 
 export default Reviews;
