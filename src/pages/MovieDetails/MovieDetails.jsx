@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useLocation, useParams, Outlet } from 'react-router-dom';
-import { Suspense, useState, useEffect, useCallback } from 'react';
+import { Suspense, useState, useEffect, useCallback, useRef } from 'react';
 import {
   LinkBack,
   Container,
@@ -29,6 +29,7 @@ const MovieDetails = () => {
 
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/products';
+  const ref = useRef(backLinkHref);
 
   const getMovieDetails = useCallback(async () => {
     try {
@@ -46,7 +47,7 @@ const MovieDetails = () => {
   return (
     <main>
       <Container>
-        <LinkBack to={backLinkHref} state={{ from: location }}>
+        <LinkBack to={ref.current}>
           <BiArrowBack /> Go back
         </LinkBack>
 
