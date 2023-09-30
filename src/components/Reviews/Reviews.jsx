@@ -15,15 +15,19 @@ const options = {
 const Reviews = props => {
   const { movieId } = useParams();
   const [reviewsMovie, setReviewsMovie] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const getCastMovie = useCallback(async movieId => {
     try {
+      setLoading(true);
       const numberId = Number(movieId);
       const url = `https://api.themoviedb.org/3/movie/${numberId}/reviews?language=en-US&page=1`;
       const { data } = await axios(url, options);
       setReviewsMovie(data.results);
     } catch (error) {
       console.log(error.message);
+    } finally {
+      setLoading(false);
     }
   }, []);
 
@@ -33,7 +37,8 @@ const Reviews = props => {
 
   return (
     <>
-      {reviewsMovie.length > 0 && (
+      {loading && <div>Loading...</div>}
+      {reviewsMovie.length > 0 && !loading && (
         <ul>
           {reviewsMovie.map(({ id, author, content }) => (
             <li key={id}>
@@ -43,8 +48,8 @@ const Reviews = props => {
           ))}
         </ul>
       )}
-      {reviewsMovie.length === 0 && (
-        <div>We don't have ani reviews for this movie.</div>
+      {reviewsMovie.length === 0 && !loading && (
+        <p>We don't have ani reviews for this movie.</p>
       )}
     </>
   );

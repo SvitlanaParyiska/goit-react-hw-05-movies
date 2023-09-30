@@ -16,16 +16,20 @@ const options = {
 
 const Cast = props => {
   const { movieId } = useParams();
-  const [castMovie, setCastMovie] = useState(null);
+  const [castMovie, setCastMovie] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const getCastMovie = useCallback(async movieId => {
     try {
+      setLoading(true);
       const numberId = Number(movieId);
       const url = `https://api.themoviedb.org/3/movie/${numberId}/credits?language=en-US`;
       const { data } = await axios(url, options);
       setCastMovie(data.cast);
     } catch (error) {
       console.log(error.message);
+    } finally {
+      setLoading(false);
     }
   }, []);
 
@@ -35,7 +39,8 @@ const Cast = props => {
 
   return (
     <>
-      {castMovie && (
+      {loading && <div>Loading...</div>}
+      {castMovie.length > 0 && (
         <ul>
           {castMovie.map(({ id, name, character, profile_path }) => (
             <li key={id}>
@@ -53,6 +58,9 @@ const Cast = props => {
             </li>
           ))}
         </ul>
+      )}
+      {castMovie.length === 0 && !loading && (
+        <p>There is no information yet.</p>
       )}
     </>
   );

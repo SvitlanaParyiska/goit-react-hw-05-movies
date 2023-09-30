@@ -11,6 +11,7 @@ import {
   InfoLink,
 } from './MovieDetails.styled';
 import { BiArrowBack } from 'react-icons/bi';
+import defaultFilmPicture from '../../components/images/placeholderFilm.png';
 
 const options = {
   headers: {
@@ -23,6 +24,7 @@ const options = {
 
 const MovieDetails = () => {
   const [movieDetails, setMovieDetails] = useState(null);
+
   const { movieId } = useParams();
   const numberId = Number(movieId);
   const url = `https://api.themoviedb.org/3/movie/${numberId}`;
@@ -55,7 +57,11 @@ const MovieDetails = () => {
           <Wrapper>
             <img
               width="200px"
-              src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
+              src={
+                movieDetails.poster_path
+                  ? `https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`
+                  : defaultFilmPicture
+              }
               alt={movieDetails.title}
             />
             <div>
