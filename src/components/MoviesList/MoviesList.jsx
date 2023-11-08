@@ -1,20 +1,36 @@
 import React from 'react';
-
+import defaultFilmPicture from '../../components/images/placeholderFilm.png';
 import { useLocation } from 'react-router-dom';
-import { MovieItem, MovieLink } from './MoviesList.styled';
+import {
+  MovieItem,
+  MovieLink,
+  MovieList,
+  MovieThumb,
+} from './MoviesList.styled';
 
 const MoviesList = ({ movies }) => {
+  console.log(movies);
   const location = useLocation();
   return (
-    <ul>
-      {movies.map(({ title, id }) => (
+    <MovieList>
+      {movies.map(({ poster_path, title, id }) => (
         <MovieItem key={id}>
           <MovieLink to={`/movies/${id}`} state={{ from: location }}>
-            <p>{title}</p>
+            <MovieThumb>
+              <img
+                src={
+                  poster_path
+                    ? `https://image.tmdb.org/t/p/w500${poster_path}`
+                    : defaultFilmPicture
+                }
+                alt={title}
+              />
+              <h4>{title}</h4>
+            </MovieThumb>
           </MovieLink>
         </MovieItem>
       ))}
-    </ul>
+    </MovieList>
   );
 };
 
