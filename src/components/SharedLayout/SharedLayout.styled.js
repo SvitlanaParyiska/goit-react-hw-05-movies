@@ -21,12 +21,12 @@ export const Link = styled(NavLink)`
   padding: 12px 20px;
   border-radius: 4px;
   text-decoration: none;
-  color: black;
+  color: #0a0d20;
   font-weight: 500;
+  background: linear-gradient(317deg, #26fff2 13.2%, #326cff 51.54%);
 
   &.active {
-    color: white;
-    background-color: #1f618d;
-    box-shadow: 0 0 13px 2px grey;
+    background: linear-gradient(317deg, #26fff2 13.2%, #326cff 71.54%);
+    box-shadow: 0px 0px 27px 8px #326cff;
   }
 `;

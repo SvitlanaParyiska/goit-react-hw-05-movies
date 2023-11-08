@@ -3,7 +3,8 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useState } from 'react';
 import { useEffect, useCallback } from 'react';
-import Placeholder from '../images/placholder.jpg';
+import Placeholder from '../images/placeholder.jpg';
+import { CastList, Img, Text } from './Cast.styled';
 
 const options = {
   method: 'GET',
@@ -41,23 +42,23 @@ const Cast = props => {
     <>
       {loading && <div>Loading...</div>}
       {castMovie.length > 0 && (
-        <ul>
+        <CastList>
           {castMovie.map(({ id, name, character, profile_path }) => (
             <li key={id}>
-              <img
-                width="100px"
+              <Img
+                width="110px"
                 src={
                   profile_path
                     ? `https://image.tmdb.org/t/p/w500${profile_path}`
                     : Placeholder
                 }
                 alt={name}
-              ></img>
-              <p>{name}</p>
-              <p>Character: {character}</p>
+              ></Img>
+              <Text>{name}</Text>
+              <Text>Character: {character}</Text>
             </li>
           ))}
-        </ul>
+        </CastList>
       )}
       {castMovie.length === 0 && !loading && (
         <p>There is no information yet.</p>

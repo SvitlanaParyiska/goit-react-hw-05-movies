@@ -11,18 +11,22 @@ export const Wrapper = styled.div`
   gap: 20px;
 `;
 
+export const Img = styled.img`
+  box-shadow: 0 0 10px 1px grey;
+`;
+
 export const LinkBack = styled(Link)`
   display: inline-block;
   margin-top: 10px;
   margin-bottom: 20px;
-  padding: 8px 10px;
+  padding: 6px 8px;
   border-radius: 4px;
   text-decoration: none;
-  color: black;
+  color: #0a0d20;
+  background: linear-gradient(317deg, #26fff2 13.2%, #326cff 51.54%);
   font-weight: 500;
 
   &:hover {
-    color: white;
     background-color: #1f618d;
     box-shadow: 0 0 13px 2px grey;
   }
@@ -53,7 +57,8 @@ export const InfoLink = styled(NavLink)`
   padding: 8px 10px;
   border-radius: 4px;
   text-decoration: none;
-  color: black;
+  color: #0a0d20;
+  background: linear-gradient(317deg, #26fff2 13.2%, #326cff 51.54%);
   font-weight: 500;
 
   &:hover {
@@ -61,7 +66,6 @@ export const InfoLink = styled(NavLink)`
     box-shadow: 0 0 13px 2px grey;
   }
   &.active {
-    color: white;
     background-color: #1f618d;
     box-shadow: 0 0 13px 2px grey;
   }

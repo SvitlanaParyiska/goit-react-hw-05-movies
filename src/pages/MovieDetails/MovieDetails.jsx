@@ -9,6 +9,7 @@ import {
   GenresList,
   AdditionalBox,
   InfoLink,
+  Img,
 } from './MovieDetails.styled';
 import { BiArrowBack } from 'react-icons/bi';
 import defaultFilmPicture from '../../components/images/placeholderFilm.png';
@@ -55,7 +56,7 @@ const MovieDetails = () => {
 
         {movieDetails && (
           <Wrapper>
-            <img
+            <Img
               width="200px"
               src={
                 movieDetails.poster_path

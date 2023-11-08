@@ -1,21 +1,16 @@
 import styled from 'styled-components';
 
 export const SearchFormSt = styled.form`
-  margin-bottom: 20px;
-  margin-top: 20px;
+  margin: 20px auto;
   display: flex;
-  align-items: center;
-  width: 100%;
   max-width: 600px;
   background-color: #fff;
   border-radius: 3px;
   overflow: hidden;
+  box-shadow: 0 0 5px 1px grey;
 `;
 
 export const SearchFormButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 140px;
   height: 40px;
   font-size: 16px;
@@ -23,7 +18,8 @@ export const SearchFormButton = styled.button`
   border: none;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
-
+  color: #0a0d20;
+  background: linear-gradient(317deg, #26fff2 13.2%, #326cff 51.54%);
   cursor: pointer;
   &:hover {
     color: white;
@@ -33,7 +29,7 @@ export const SearchFormButton = styled.button`
 `;
 
 export const SearchFormInput = styled.input`
-  width: 300px;
+  width: 100%;
   height: 40px;
   font: inherit;
   font-size: 16px;
