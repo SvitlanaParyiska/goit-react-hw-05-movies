@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useState } from 'react';
 import { useEffect, useCallback } from 'react';
-import Placeholder from '../images/placeholder.jpg';
+import Placeholder from '../images/placeholderPerson.jpg';
 import { CastList, Img, Text } from './Cast.styled';
 
 const options = {
