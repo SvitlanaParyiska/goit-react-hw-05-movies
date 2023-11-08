@@ -29,4 +29,8 @@ export const Link = styled(NavLink)`
     background: linear-gradient(317deg, #26fff2 13.2%, #326cff 71.54%);
     box-shadow: 0px 0px 27px 8px #326cff;
   }
+  &:hover {
+    background-color: #a9cce3;
+    box-shadow: 0 0 13px 2px grey;
+  }
 `;
