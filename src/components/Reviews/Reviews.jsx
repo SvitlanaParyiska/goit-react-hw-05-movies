@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { useState, useCallback, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { ColorRing } from 'react-loader-spinner';
 
 const options = {
   method: 'GET',
@@ -37,7 +38,17 @@ const Reviews = props => {
 
   return (
     <>
-      {loading && <div>Loading...</div>}
+      {loading && (
+        <ColorRing
+          visible={true}
+          height="50"
+          width="50"
+          ariaLabel="blocks-loading"
+          wrapperStyle={{}}
+          wrapperClass="blocks-wrapper"
+          colors={['#26fff2', '#326cff', '#849b87', '#26fff2', '#326cff']}
+        />
+      )}
       {reviewsMovie.length > 0 && !loading && (
         <ul>
           {reviewsMovie.map(({ id, author, content }) => (

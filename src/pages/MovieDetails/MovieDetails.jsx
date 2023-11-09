@@ -13,6 +13,7 @@ import {
 } from './MovieDetails.styled';
 import { BiArrowBack } from 'react-icons/bi';
 import defaultFilmPicture from '../../components/images/placeholderFilm.png';
+import { ColorRing } from 'react-loader-spinner';
 
 const options = {
   headers: {
@@ -92,7 +93,19 @@ const MovieDetails = () => {
         </ul>
       </AdditionalBox>
       <Container>
-        <Suspense fallback={<div>Loading subpage...</div>}>
+        <Suspense
+          fallback={
+            <ColorRing
+              visible={true}
+              height="50"
+              width="50"
+              ariaLabel="blocks-loading"
+              wrapperStyle={{}}
+              wrapperClass="blocks-wrapper"
+              colors={['#26fff2', '#326cff', '#849b87', '#26fff2', '#326cff']}
+            />
+          }
+        >
           <Outlet />
         </Suspense>
       </Container>

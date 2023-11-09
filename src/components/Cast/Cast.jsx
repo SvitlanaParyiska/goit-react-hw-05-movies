@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useEffect, useCallback } from 'react';
 import Placeholder from '../images/placeholderPerson.jpg';
 import { CastList, Img, Text } from './Cast.styled';
+import { ColorRing } from 'react-loader-spinner';
 
 const options = {
   method: 'GET',
@@ -40,7 +41,17 @@ const Cast = props => {
 
   return (
     <>
-      {loading && <div>Loading...</div>}
+      {loading && (
+        <ColorRing
+          visible={true}
+          height="50"
+          width="50"
+          ariaLabel="blocks-loading"
+          wrapperStyle={{}}
+          wrapperClass="blocks-wrapper"
+          colors={['#26fff2', '#326cff', '#849b87', '#26fff2', '#326cff']}
+        />
+      )}
       {castMovie.length > 0 && (
         <CastList>
           {castMovie.map(({ id, name, character, profile_path }) => (
